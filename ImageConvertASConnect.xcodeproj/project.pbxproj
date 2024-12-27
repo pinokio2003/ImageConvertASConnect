@@ -1,0 +1,585 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		A741DB2D2D1EB4CF000DA3BF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A741DB132D1EB4CE000DA3BF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A741DB1A2D1EB4CE000DA3BF;
+			remoteInfo = ImageConvertASConnect;
+		};
+		A741DB372D1EB4CF000DA3BF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A741DB132D1EB4CE000DA3BF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A741DB1A2D1EB4CE000DA3BF;
+			remoteInfo = ImageConvertASConnect;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A741DB1B2D1EB4CE000DA3BF /* ImageConvertASConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageConvertASConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A741DB2C2D1EB4CF000DA3BF /* ImageConvertASConnectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageConvertASConnectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A741DB362D1EB4CF000DA3BF /* ImageConvertASConnectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageConvertASConnectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A741DB562D1EBAC7000DA3BF /* Exceptions for "ImageConvertASConnect" folder in "ImageConvertASConnect" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = A741DB1A2D1EB4CE000DA3BF /* ImageConvertASConnect */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		A741DB1D2D1EB4CE000DA3BF /* ImageConvertASConnect */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A741DB562D1EBAC7000DA3BF /* Exceptions for "ImageConvertASConnect" folder in "ImageConvertASConnect" target */,
+			);
+			path = ImageConvertASConnect;
+			sourceTree = "<group>";
+		};
+		A741DB2F2D1EB4CF000DA3BF /* ImageConvertASConnectTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ImageConvertASConnectTests;
+			sourceTree = "<group>";
+		};
+		A741DB392D1EB4CF000DA3BF /* ImageConvertASConnectUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ImageConvertASConnectUITests;
+			sourceTree = "<group>";
+		};
+		A741DB4C2D1EB57D000DA3BF /* View */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = View;
+			sourceTree = "<group>";
+		};
+		A741DB4E2D1EB580000DA3BF /* Model */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Model;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A741DB182D1EB4CE000DA3BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A741DB292D1EB4CF000DA3BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A741DB332D1EB4CF000DA3BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A741DB122D1EB4CE000DA3BF = {
+			isa = PBXGroup;
+			children = (
+				A741DB4E2D1EB580000DA3BF /* Model */,
+				A741DB4C2D1EB57D000DA3BF /* View */,
+				A741DB1D2D1EB4CE000DA3BF /* ImageConvertASConnect */,
+				A741DB2F2D1EB4CF000DA3BF /* ImageConvertASConnectTests */,
+				A741DB392D1EB4CF000DA3BF /* ImageConvertASConnectUITests */,
+				A741DB1C2D1EB4CE000DA3BF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A741DB1C2D1EB4CE000DA3BF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A741DB1B2D1EB4CE000DA3BF /* ImageConvertASConnect.app */,
+				A741DB2C2D1EB4CF000DA3BF /* ImageConvertASConnectTests.xctest */,
+				A741DB362D1EB4CF000DA3BF /* ImageConvertASConnectUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A741DB1A2D1EB4CE000DA3BF /* ImageConvertASConnect */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A741DB402D1EB4CF000DA3BF /* Build configuration list for PBXNativeTarget "ImageConvertASConnect" */;
+			buildPhases = (
+				A741DB172D1EB4CE000DA3BF /* Sources */,
+				A741DB182D1EB4CE000DA3BF /* Frameworks */,
+				A741DB192D1EB4CE000DA3BF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				A741DB1D2D1EB4CE000DA3BF /* ImageConvertASConnect */,
+				A741DB4C2D1EB57D000DA3BF /* View */,
+				A741DB4E2D1EB580000DA3BF /* Model */,
+			);
+			name = ImageConvertASConnect;
+			packageProductDependencies = (
+			);
+			productName = ImageConvertASConnect;
+			productReference = A741DB1B2D1EB4CE000DA3BF /* ImageConvertASConnect.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A741DB2B2D1EB4CF000DA3BF /* ImageConvertASConnectTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A741DB432D1EB4CF000DA3BF /* Build configuration list for PBXNativeTarget "ImageConvertASConnectTests" */;
+			buildPhases = (
+				A741DB282D1EB4CF000DA3BF /* Sources */,
+				A741DB292D1EB4CF000DA3BF /* Frameworks */,
+				A741DB2A2D1EB4CF000DA3BF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A741DB2E2D1EB4CF000DA3BF /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A741DB2F2D1EB4CF000DA3BF /* ImageConvertASConnectTests */,
+			);
+			name = ImageConvertASConnectTests;
+			packageProductDependencies = (
+			);
+			productName = ImageConvertASConnectTests;
+			productReference = A741DB2C2D1EB4CF000DA3BF /* ImageConvertASConnectTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A741DB352D1EB4CF000DA3BF /* ImageConvertASConnectUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A741DB462D1EB4CF000DA3BF /* Build configuration list for PBXNativeTarget "ImageConvertASConnectUITests" */;
+			buildPhases = (
+				A741DB322D1EB4CF000DA3BF /* Sources */,
+				A741DB332D1EB4CF000DA3BF /* Frameworks */,
+				A741DB342D1EB4CF000DA3BF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A741DB382D1EB4CF000DA3BF /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A741DB392D1EB4CF000DA3BF /* ImageConvertASConnectUITests */,
+			);
+			name = ImageConvertASConnectUITests;
+			packageProductDependencies = (
+			);
+			productName = ImageConvertASConnectUITests;
+			productReference = A741DB362D1EB4CF000DA3BF /* ImageConvertASConnectUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A741DB132D1EB4CE000DA3BF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					A741DB1A2D1EB4CE000DA3BF = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					A741DB2B2D1EB4CF000DA3BF = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = A741DB1A2D1EB4CE000DA3BF;
+					};
+					A741DB352D1EB4CF000DA3BF = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = A741DB1A2D1EB4CE000DA3BF;
+					};
+				};
+			};
+			buildConfigurationList = A741DB162D1EB4CE000DA3BF /* Build configuration list for PBXProject "ImageConvertASConnect" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A741DB122D1EB4CE000DA3BF;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = A741DB1C2D1EB4CE000DA3BF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A741DB1A2D1EB4CE000DA3BF /* ImageConvertASConnect */,
+				A741DB2B2D1EB4CF000DA3BF /* ImageConvertASConnectTests */,
+				A741DB352D1EB4CF000DA3BF /* ImageConvertASConnectUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A741DB192D1EB4CE000DA3BF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A741DB2A2D1EB4CF000DA3BF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A741DB342D1EB4CF000DA3BF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A741DB172D1EB4CE000DA3BF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A741DB282D1EB4CF000DA3BF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A741DB322D1EB4CF000DA3BF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A741DB2E2D1EB4CF000DA3BF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A741DB1A2D1EB4CE000DA3BF /* ImageConvertASConnect */;
+			targetProxy = A741DB2D2D1EB4CF000DA3BF /* PBXContainerItemProxy */;
+		};
+		A741DB382D1EB4CF000DA3BF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A741DB1A2D1EB4CE000DA3BF /* ImageConvertASConnect */;
+			targetProxy = A741DB372D1EB4CF000DA3BF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A741DB3E2D1EB4CF000DA3BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A741DB3F2D1EB4CF000DA3BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		A741DB412D1EB4CF000DA3BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ImageConvertASConnect/ImageConvertASConnect.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ImageConvertASConnect/Preview Content\"";
+				DEVELOPMENT_TEAM = 75J6R9JM9Z;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ImageConvertASConnect/Info.plist;
+				INFOPLIST_KEY_NSDesktopFolderUsageDescription = "Need for save in desctop";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HistoryFightNinja.Ak.ImageConvertASConnect;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A741DB422D1EB4CF000DA3BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ImageConvertASConnect/ImageConvertASConnect.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ImageConvertASConnect/Preview Content\"";
+				DEVELOPMENT_TEAM = 75J6R9JM9Z;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ImageConvertASConnect/Info.plist;
+				INFOPLIST_KEY_NSDesktopFolderUsageDescription = "Need for save in desctop";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HistoryFightNinja.Ak.ImageConvertASConnect;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		A741DB442D1EB4CF000DA3BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 75J6R9JM9Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HistoryFightNinja.Ak.ImageConvertASConnectTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ImageConvertASConnect.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ImageConvertASConnect";
+			};
+			name = Debug;
+		};
+		A741DB452D1EB4CF000DA3BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 75J6R9JM9Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HistoryFightNinja.Ak.ImageConvertASConnectTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ImageConvertASConnect.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ImageConvertASConnect";
+			};
+			name = Release;
+		};
+		A741DB472D1EB4CF000DA3BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 75J6R9JM9Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HistoryFightNinja.Ak.ImageConvertASConnectUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = ImageConvertASConnect;
+			};
+			name = Debug;
+		};
+		A741DB482D1EB4CF000DA3BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 75J6R9JM9Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HistoryFightNinja.Ak.ImageConvertASConnectUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = ImageConvertASConnect;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A741DB162D1EB4CE000DA3BF /* Build configuration list for PBXProject "ImageConvertASConnect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A741DB3E2D1EB4CF000DA3BF /* Debug */,
+				A741DB3F2D1EB4CF000DA3BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A741DB402D1EB4CF000DA3BF /* Build configuration list for PBXNativeTarget "ImageConvertASConnect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A741DB412D1EB4CF000DA3BF /* Debug */,
+				A741DB422D1EB4CF000DA3BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A741DB432D1EB4CF000DA3BF /* Build configuration list for PBXNativeTarget "ImageConvertASConnectTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A741DB442D1EB4CF000DA3BF /* Debug */,
+				A741DB452D1EB4CF000DA3BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A741DB462D1EB4CF000DA3BF /* Build configuration list for PBXNativeTarget "ImageConvertASConnectUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A741DB472D1EB4CF000DA3BF /* Debug */,
+				A741DB482D1EB4CF000DA3BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A741DB132D1EB4CE000DA3BF /* Project object */;
+}

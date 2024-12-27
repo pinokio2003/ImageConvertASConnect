@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSUserSelectedFile</key>
+	<string>Access to user-selected file locations</string>
+	<key>NSDesktopFolderUsageDescription</key>
+	<string>he app needs access to save images to the desktop</string>
+</dict>
+</plist>
