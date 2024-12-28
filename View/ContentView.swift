@@ -223,7 +223,7 @@ struct ContentView: View {
                             fileCounter += 1
                         }
                         
-                        NSSound.beep() // Звуковое уведомление о завершении
+                        NSSound.beep()
                         await MainActor.run {
                             self.isProcessing = false
                         }
