@@ -9,13 +9,12 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 struct DropView: View {
-    @Binding var droppedImage: NSImage?
+    @Binding var droppedImages: [NSImage]
     @State private var isTargeted = false
     @State private var dragError = false
     @State private var errorMessage: String?
     
-    // Supported file types
-    private let supportedTypes: [UTType] = [.image, .fileURL]  // Добавляем .fileURL
+    private let supportedTypes: [UTType] = [.image, .fileURL]
     
     var body: some View {
         ZStack {
@@ -29,8 +28,8 @@ struct DropView: View {
                 .foregroundColor(strokeColor)
             
             VStack(spacing: 12) {
-                if let image = droppedImage {
-                    imagePreview(image)
+                if !droppedImages.isEmpty {
+                    imagesPreview
                 } else {
                     dropPrompt
                 }
@@ -57,19 +56,28 @@ struct DropView: View {
         return isTargeted ? .blue : .gray
     }
     
-    private func imagePreview(_ image: NSImage) -> some View {
+    private var imagesPreview: some View {
         VStack {
-            Image(nsImage: image)
-                .resizable()
-                .scaledToFit()
-                .frame(maxHeight: 150)
+            ScrollView(.horizontal, showsIndicators: true) {
+                HStack(spacing: 10) {
+                    ForEach(droppedImages.indices, id: \.self) { index in
+                        VStack {
+                            Image(nsImage: droppedImages[index])
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxHeight: 150)
+                            
+                            Text("\(Int(droppedImages[index].size.width))×\(Int(droppedImages[index].size.height))")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        }
+                    }
+                }
+                .padding(.horizontal)
+            }
             
-            Text("\(Int(image.size.width))×\(Int(image.size.height))")
-                .font(.caption)
-                .foregroundColor(.secondary)
-            
-            Button(action: clearImage) {
-                Label("Clear Image", systemImage: "xmark.circle.fill")
+            Button(action: clearImages) {
+                Label("Clear All Images", systemImage: "xmark.circle.fill")
                     .foregroundColor(.red)
             }
             .buttonStyle(.plain)
@@ -82,7 +90,7 @@ struct DropView: View {
                 .font(.system(size: 30))
                 .foregroundColor(.gray)
             
-            Text("Drop Image Here")
+            Text("Drop Images Here")
                 .font(.headline)
                 .foregroundColor(.gray)
             
@@ -104,81 +112,68 @@ struct DropView: View {
             )
     }
     
-    private func clearImage() {
+    private func clearImages() {
         withAnimation {
-            droppedImage = nil
+            droppedImages.removeAll()
             errorMessage = nil
         }
     }
     
     private func handleDrop(providers: [NSItemProvider]) -> Bool {
-        guard let provider = providers.first else {
-            showError("No file provided")
-            return false
-        }
+        let dispatchGroup = DispatchGroup()
+        var loadedImages: [NSImage] = []
         
-        // Изменим приоритет - сначала проверяем возможность загрузки как файл
-        if provider.canLoadObject(ofClass: NSImage.self) {
-            provider.loadObject(ofClass: NSImage.self) { image, error in
-                DispatchQueue.main.async {
+        for provider in providers {
+            dispatchGroup.enter()
+            
+            // Сначала пробуем загрузить как NSImage
+            if provider.canLoadObject(ofClass: NSImage.self) {
+                provider.loadObject(ofClass: NSImage.self) { image, error in
                     if let error = error {
-                        showError(error.localizedDescription)
+                        DispatchQueue.main.async {
+                            showError(error.localizedDescription)
+                        }
+                        dispatchGroup.leave()
                         return
                     }
                     
                     if let image = image as? NSImage {
-                        self.droppedImage = image
-                        self.errorMessage = nil
-                    } else {
-                        showError("Failed to load image")
+                        loadedImages.append(image)
                     }
+                    dispatchGroup.leave()
+                }
+            } else {
+                // Если не получилось как NSImage, пробуем через URL
+                provider.loadItem(forTypeIdentifier: UTType.fileURL.identifier) { (urlData, error) in
+                    if let error = error {
+                        DispatchQueue.main.async {
+                            showError(error.localizedDescription)
+                        }
+                        dispatchGroup.leave()
+                        return
+                    }
+                    
+                    if let urlData = urlData as? Data,
+                       let url = URL(dataRepresentation: urlData, relativeTo: nil),
+                       let image = NSImage(contentsOf: url) {
+                        loadedImages.append(image)
+                    }
+                    dispatchGroup.leave()
                 }
             }
-            return true
         }
         
-        // Если не получилось как NSImage, пробуем через URL
-        provider.loadItem(forTypeIdentifier: UTType.fileURL.identifier) { (urlData, error) in
-            DispatchQueue.main.async {
-                if let error = error {
-                    showError(error.localizedDescription)
-                    return
-                }
-                
-                guard let urlData = urlData as? Data,
-                      let url = URL(dataRepresentation: urlData, relativeTo: nil),
-                      let image = NSImage(contentsOf: url) else {
-                    showError("Invalid image data")
-                    return
-                }
-                
-                self.droppedImage = image
-                self.errorMessage = nil
+        dispatchGroup.notify(queue: .main) {
+            if loadedImages.isEmpty {
+                showError("No valid images found")
+            } else {
+                droppedImages.append(contentsOf: loadedImages)
+                errorMessage = nil
+                dragError = false
             }
         }
         
         return true
-    }
-    
-    private func handleDroppedItem(_ item: NSSecureCoding?, typeIdentifier: String) {
-        guard let urlData = item as? Data,
-              let url = URL(dataRepresentation: urlData, relativeTo: nil),
-              let image = NSImage(contentsOf: url) else {
-            showError("Invalid image data")
-            return
-        }
-        
-        // Validate image
-        switch validateImage(image) {
-        case .success:
-            withAnimation {
-                droppedImage = image
-                errorMessage = nil
-                dragError = false
-            }
-        case .failure(let error):
-            showError(error.localizedDescription)
-        }
     }
     
     private func showError(_ message: String) {

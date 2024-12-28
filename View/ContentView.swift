@@ -16,7 +16,7 @@ struct ContentView: View {
     ]
     
     @State private var selectedOrientation: Orientation = .auto
-    @State private var droppedImage: NSImage? = nil
+    @State private var droppedImages: [NSImage] = []
     @State private var showAlert = false
     @State private var alertItem: AlertItem?
     
@@ -26,7 +26,7 @@ struct ContentView: View {
     @State private var totalCount = 0
     
     private var isConvertButtonEnabled: Bool {
-        droppedImage != nil && selectedDevices.contains { $0.value } && !isProcessing
+        !droppedImages.isEmpty && selectedDevices.contains { $0.value } && !isProcessing
     }
     
     var body: some View {
@@ -55,12 +55,12 @@ struct ContentView: View {
     
     private var imageDropArea: some View {
         VStack {
-            DropView(droppedImage: $droppedImage)
+            DropView(droppedImages: $droppedImages)
                 .frame(maxWidth: .infinity, maxHeight: 200)
                 .background(Color.gray.opacity(0.1))
                 .cornerRadius(12)
             
-            if let image = droppedImage {
+            if let image = droppedImages.first {
                 Text("Original Size: \(Int(image.size.width))x\(Int(image.size.height))")
                     .font(.caption)
                     .foregroundColor(.secondary)
@@ -76,7 +76,8 @@ struct ContentView: View {
             
             ScrollView {
                 VStack(alignment: .leading, spacing: 4) {
-                    ForEach(Array(selectedDevices.keys.sorted().enumerated()), id: \.element) { index, device in
+                    let sortedDevices = selectedDevices.keys.sorted()
+                    ForEach(sortedDevices, id: \.self) { device in
                         DeviceSelectionRow(
                             device: device,
                             isSelected: Binding(
@@ -112,7 +113,7 @@ struct ContentView: View {
     
     private var previewArea: some View {
         Group {
-            if let image = droppedImage, isProcessing {
+            if !droppedImages.isEmpty && isProcessing {
                 VStack {
                     ProgressView("Processing \(processedCount)/\(totalCount)")
                         .progressViewStyle(LinearProgressViewStyle())
@@ -146,7 +147,7 @@ struct ContentView: View {
     }
     
     private func processImages() {
-        guard let image = droppedImage else {
+        guard !droppedImages.isEmpty else {
             alertItem = AlertItem(
                 title: "No Image Selected",
                 message: "Please drop an image before converting."
@@ -164,22 +165,15 @@ struct ContentView: View {
         }
         
         isProcessing = true
-        totalCount = selectedCount
+        totalCount = selectedCount * droppedImages.count
         processedCount = 0
         
         Task {
-            await processImagesWithProgress(image)
-            await MainActor.run {
-                isProcessing = false
-                alertItem = AlertItem(
-                    title: "Processing Complete",
-                    message: "Successfully converted \(processedCount) images."
-                )
-            }
+            await processImagesWithProgress(droppedImages)
         }
     }
     
-    private func processImagesWithProgress(_ image: NSImage) async {
+    private func processImagesWithProgress(_ images: [NSImage]) async {
         let savePanel = NSSavePanel()
         savePanel.title = "Choose Base Directory"
         savePanel.canCreateDirectories = true
@@ -188,111 +182,60 @@ struct ContentView: View {
             savePanel.begin { response in
                 if response == .OK, let baseURL = savePanel.url {
                     Task {
-                        for (device, isSelected) in self.selectedDevices where isSelected {
-                            guard let size = resolutions[device] else { continue }
-                            
-                            let effectiveOrientation = self.selectedOrientation == .auto ?
-                                determineOrientation(for: image) : self.selectedOrientation
-                            
-                            let targetSize = calculateTargetSize(
-                                originalSize: image.size,
-                                targetSize: size,
-                                orientation: effectiveOrientation
-                            )
-                            
-                            switch resizeImage(image, to: targetSize) {
-                                case .success(let resizedImage):
-                                    let resolution = device.components(separatedBy: "(").last?.dropLast(1) ?? ""
-                                    let folderName = "\(device)_\(resolution)"
-                                    let folderURL = baseURL.appendingPathComponent(folderName)
-                                    
-                                    do {
-                                        try FileManager.default.createDirectory(at: folderURL, withIntermediateDirectories: true)
-                                        let fileURL = folderURL.appendingPathComponent("Screen_1.png")
+                        var fileCounter = 1
+                        
+                        for image in images {
+                            for (device, isSelected) in self.selectedDevices where isSelected {
+                                guard let size = resolutions[device] else { continue }
+                                
+                                let effectiveOrientation = self.selectedOrientation == .auto ?
+                                    determineOrientation(for: image) : self.selectedOrientation
+                                
+                                let targetSize = calculateTargetSize(
+                                    originalSize: image.size,
+                                    targetSize: size,
+                                    orientation: effectiveOrientation
+                                )
+                                
+                                switch resizeImage(image, to: targetSize) {
+                                    case .success(let resizedImage):
+                                        let resolution = device.components(separatedBy: "(").last?.dropLast(1) ?? ""
+                                        let folderName = "\(device)_\(resolution)"
+                                        let folderURL = baseURL.appendingPathComponent(folderName)
                                         
-                                        if case .success(let imageData) = optimizeImage(resizedImage) {
-                                            try imageData.write(to: fileURL)
-                                            await MainActor.run {
-                                                self.processedCount += 1
+                                        do {
+                                            try FileManager.default.createDirectory(at: folderURL, withIntermediateDirectories: true)
+                                            let fileURL = folderURL.appendingPathComponent("Screen_\(fileCounter).png")
+                                            
+                                            if case .success(let imageData) = optimizeImage(resizedImage) {
+                                                try imageData.write(to: fileURL)
+                                                await MainActor.run {
+                                                    self.processedCount += 1
+                                                }
                                             }
+                                        } catch {
+                                            print("Error saving image: \(error)")
                                         }
-                                    } catch {
-                                        print("Error saving image: \(error)")
-                                    }
-                                case .failure(let error):
-                                    print("Error processing image: \(error)")
+                                    case .failure(let error):
+                                        print("Error processing image: \(error)")
+                                }
                             }
+                            fileCounter += 1
                         }
                         
+                        NSSound.beep() // Звуковое уведомление о завершении
                         await MainActor.run {
                             self.isProcessing = false
-                            self.alertItem = AlertItem(
-                                title: "Processing Complete",
-                                message: "Successfully converted \(self.processedCount) images."
-                            )
                         }
                     }
                 }
             }
         }
     }
-    
-    // Добавьте эту функцию в ContentView
-    private func calculateTargetSize(originalSize: CGSize, targetSize: CGSize, orientation: Orientation) -> CGSize {
-        switch orientation {
-        case .auto:
-            return targetSize
-        case .horizontal:
-            return CGSize(
-                width: max(targetSize.width, targetSize.height),
-                height: min(targetSize.width, targetSize.height)
-            )
-        case .vertical:
-            return CGSize(
-                width: min(targetSize.width, targetSize.height),
-                height: max(targetSize.width, targetSize.height)
-            )
-        }
-    }
-    
-    private func calculateAdjustedSize(size: CGSize, orientation: Orientation) -> CGSize {
-        switch orientation {
-        case .horizontal:
-            return CGSize(width: max(size.width, size.height),
-                         height: min(size.width, size.height))
-        case .vertical:
-            return CGSize(width: min(size.width, size.height),
-                         height: max(size.width, size.height))
-        case .auto:
-            return size
-        }
-    }
 }
 
-// Supporting Types
 struct AlertItem: Identifiable {
     let id = UUID()
     let title: String
     let message: String
-}
-
-struct DeviceSelectionRow: View {
-    let device: String
-    @Binding var isSelected: Bool
-    let size: CGSize
-    
-    var body: some View {
-        HStack {
-            Toggle(isOn: $isSelected) {
-                VStack(alignment: .leading) {
-                    Text(device)
-                        .font(.system(.body, design: .rounded))
-                    Text("\(Int(size.width))x\(Int(size.height))")
-                        .font(.caption2)
-                        .foregroundColor(.secondary)
-                }
-            }
-        }
-        .padding(.vertical, 4)
-    }
 }
